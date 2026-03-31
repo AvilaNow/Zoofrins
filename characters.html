@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet the Characters — Zoofrins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy:   #1B2C5B;
+    --green:  #56B848;
+    --pink:   #EF8FA2;
+    --yellow: #F1AB2D;
+    --teal:   #42BCC2;
+    --cream:  #FFFBF3;
+    --white:  #FFFFFF;
+    --shadow: 0 8px 32px rgba(27,44,91,0.11);
+    --shadow-pop: 0 20px 56px rgba(27,44,91,0.18);
+    --radius: 28px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--navy); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,251,243,0.92); backdrop-filter: blur(12px);
+    border-bottom: 2px solid rgba(27,44,91,0.07);
+    padding: 0 32px;
+  }
+  .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .nav-logo { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 1.8rem; color: var(--navy); text-decoration: none; }
+  .nav-logo span { color: var(--teal); }
+  .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+  .nav-links a { font-weight: 700; font-size: 0.9rem; color: var(--navy); text-decoration: none; padding: 8px 16px; border-radius: 100px; transition: background 0.15s, color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { background: var(--navy); color: white; }
+  .nav-cta { background: var(--yellow) !important; color: var(--navy) !important; }
+  @media (max-width: 860px) { .nav-links { display: none; } }
+
+  /* ── HERO BAND ── */
+  .page-hero {
+    background: var(--navy);
+    padding: 72px 32px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 90% at 20% 50%, rgba(66,188,194,0.18) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 70% at 80% 30%, rgba(241,171,45,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-hero-tag {
+    display: inline-block;
+    font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.78rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    background: var(--teal); color: white;
+    padding: 6px 18px; border-radius: 100px; margin-bottom: 20px;
+    position: relative; z-index: 1;
+  }
+  .page-hero h1 {
+    font-family: 'Baloo 2', sans-serif; font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800; color: white; line-height: 1.1;
+    position: relative; z-index: 1; margin-bottom: 16px;
+  }
+  .page-hero h1 em { font-style: normal; color: var(--yellow); }
+  .page-hero p {
+    color: rgba(255,255,255,0.72); font-size: 1.1rem; line-height: 1.7;
+    max-width: 520px; margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+
+  /* emoji row */
+  .hero-emoji-row {
+    display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 36px; position: relative; z-index: 1;
+  }
+  .hero-emoji-chip {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px; padding: 8px 18px;
+    font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.88rem;
+    color: white; cursor: pointer; transition: background 0.18s, transform 0.18s;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 7px;
+  }
+  .hero-emoji-chip:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+  .hero-emoji-chip.active { background: var(--yellow); color: var(--navy); border-color: var(--yellow); }
+
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    background: white;
+    border-bottom: 2px solid rgba(27,44,91,0.06);
+    padding: 18px 32px;
+    position: sticky; top: 68px; z-index: 90;
+  }
+  .filter-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+  .filter-label { font-weight: 800; font-size: 0.82rem; color: #a0aec0; text-transform: uppercase; letter-spacing: 0.1em; margin-right: 4px; }
+  .filter-btn {
+    font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.82rem;
+    padding: 7px 16px; border-radius: 100px; border: 2px solid #e2e8f0;
+    background: white; color: var(--navy); cursor: pointer;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { border-color: var(--navy); background: var(--navy); color: white; }
+  .filter-btn.active { border-color: var(--navy); background: var(--navy); color: white; }
+
+  /* ── MAIN GRID ── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .chars-page-grid {
+    padding: 64px 0 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
+  }
+
+  /* ── CHARACTER CARD (full) ── */
+  .char-full-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    display: flex; flex-direction: column;
+  }
+  .char-full-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-pop); }
+
+  .card-header {
+    padding: 36px 28px 28px;
+    position: relative;
+    display: flex; align-items: flex-start; gap: 20px;
+    overflow: hidden;
+  }
+  .card-header::after {
+    content: '';
+    position: absolute; bottom: -30px; right: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .card-emoji-wrap {
+    width: 80px; height: 80px; flex-shrink: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.22);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.6rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    position: relative; z-index: 1;
+  }
+  .card-header-text { flex: 1; position: relative; z-index: 1; }
+  .card-name {
+    font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 1.45rem;
+    color: white; line-height: 1.15; margin-bottom: 6px;
+  }
+  .card-role-pill {
+    display: inline-block;
+    font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.78rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white; padding: 4px 14px; border-radius: 100px;
+  }
+  .card-species {
+    display: block; margin-top: 6px;
+    font-size: 0.82rem; color: rgba(255,255,255,0.65); font-weight: 600;
+  }
+
+  .card-body { padding: 24px 28px; flex: 1; display: flex; flex-direction: column; gap: 18px; }
+
+  .card-quote {
+    background: #f7f9ff;
+    border-left: 4px solid currentColor;
+    border-radius: 0 12px 12px 0;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #4a5568;
+    line-height: 1.55;
+  }
+
+  .card-section-label {
+    font-weight: 800; font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #a0aec0; margin-bottom: 8px;
+  }
+  .card-personality { font-size: 0.93rem; color: #4a5568; line-height: 1.65; }
+
+  .card-traits { display: flex; flex-wrap: wrap; gap: 7px; }
+  .trait-chip {
+    font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.78rem;
+    padding: 5px 13px; border-radius: 100px;
+    background: #f0f4ff; color: var(--navy);
+    border: 1.5px solid #dde4f5;
+  }
+
+  .card-footer {
+    padding: 16px 28px 24px;
+    border-top: 1.5px solid #f0f3f9;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .licensing-label { font-size: 0.78rem; font-weight: 700; color: #a0aec0; text-transform: uppercase; letter-spacing: 0.08em; }
+  .licensing-text { font-size: 0.85rem; color: #4a5568; font-weight: 600; margin-top: 3px; line-height: 1.45; }
+  .story-role-badge {
+    flex-shrink: 0;
+    font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.75rem;
+    padding: 6px 12px; border-radius: 10px;
+    background: #f0f4ff; color: var(--navy);
+    text-align: center; max-width: 110px; line-height: 1.3;
+  }
+
+  /* filter hidden */
+  .char-full-card.hidden { display: none; }
+
+  /* ── TEAM DYNAMICS ── */
+  .dynamics-section {
+    background: var(--navy);
+    padding: 80px 32px;
+  }
+  .dynamics-inner { max-width: 1200px; margin: 0 auto; }
+  .dynamics-inner h2 {
+    font-family: 'Baloo 2', sans-serif; font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 800;
+    color: white; margin-bottom: 8px;
+  }
+  .dynamics-inner > p { color: rgba(255,255,255,0.65); margin-bottom: 44px; font-size: 1rem; }
+  .dynamics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; }
+  .dynamic-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    padding: 22px 24px;
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  .dynamic-emojis {
+    font-size: 1.6rem; line-height: 1; flex-shrink: 0;
+    background: rgba(255,255,255,0.1); border-radius: 12px;
+    padding: 10px 12px; white-space: nowrap;
+  }
+  .dynamic-text h4 {
+    font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 1rem;
+    color: var(--yellow); margin-bottom: 6px;
+  }
+  .dynamic-text p { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+  /* ── CTA STRIP ── */
+  .cta-strip {
+    background: var(--yellow);
+    padding: 64px 32px;
+    text-align: center;
+  }
+  .cta-strip h2 {
+    font-family: 'Baloo 2', sans-serif; font-size: clamp(1.8rem,3vw,2.4rem); font-weight: 800;
+    color: var(--navy); margin-bottom: 12px;
+  }
+  .cta-strip p { color: rgba(27,44,91,0.72); font-size: 1rem; margin-bottom: 28px; }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-block; font-family: 'Baloo 2',sans-serif; font-weight: 700; font-size: 1rem; padding: 13px 30px; border-radius: 100px; text-decoration: none; transition: transform 0.18s, box-shadow 0.18s; border: none; cursor: pointer; }
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+  .btn-navy { background: var(--navy); color: white; }
+  .btn-white { background: white; color: var(--navy); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--navy); color: white; padding: 36px 32px; text-align: center; }
+  footer p { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+  footer a { color: var(--teal); text-decoration: none; font-weight: 700; }
+
+  /* ── FADE-UP ── */
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-up.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 700px) {
+    .chars-page-grid { grid-template-columns: 1fr; }
+    .page-hero { padding: 52px 24px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Zoo<span>frins</span></a>
+    <ul class="nav-links">
+      <li><a href="characters.html" class="active">Characters</a></li>
+      <li><a href="index.html#books">Books</a></li>
+      <li><a href="index.html#show">The Show</a></li>
+      <li><a href="index.html#merch">Licensing</a></li>
+      <li><a href="index.html#signup" class="nav-cta">Join the Fun</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-tag">The Gang</div>
+  <h1>Meet the <em>Zoofrins</em></h1>
+  <p>11 original characters, each with their own voice, role, and reason to be loved. Welcome to Zoofrinville.</p>
+  <div class="hero-emoji-row">
+    <a href="#" class="hero-emoji-chip active" data-filter="all">🐾 All Characters</a>
+    <a href="#" class="hero-emoji-chip" data-filter="leader">🦁 Leaders</a>
+    <a href="#" class="hero-emoji-chip" data-filter="creator">🎨 Creators</a>
+    <a href="#" class="hero-emoji-chip" data-filter="heart">💛 Heart</a>
+    <a href="#" class="hero-emoji-chip" data-filter="wisdom">🦉 Wisdom</a>
+    <a href="#" class="hero-emoji-chip" data-filter="magic">✨ Magic</a>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <span class="filter-label">Sort by</span>
+    <button class="filter-btn active" data-sort="default">Default Order</button>
+    <button class="filter-btn" data-sort="alpha">A–Z</button>
+    <button class="filter-btn" data-sort="color-yellow">Yellow Crew</button>
+    <button class="filter-btn" data-sort="color-teal">Teal Crew</button>
+    <button class="filter-btn" data-sort="color-green">Green Crew</button>
+    <button class="filter-btn" data-sort="color-pink">Pink Crew</button>
+  </div>
+</div>
+
+<!-- CHARACTER GRID -->
+<div class="container">
+  <div class="chars-page-grid" id="charGrid">
+
+    <!-- 1. Larry Lion -->
+    <div class="char-full-card fade-up" data-name="Larry Lion" data-color="yellow" data-filter="leader">
+      <div class="card-header" style="background:var(--yellow);">
+        <div class="card-emoji-wrap">🦁</div>
+        <div class="card-header-text">
+          <div class="card-name">Larry Lion</div>
+          <span class="card-role-pill">The Leader</span>
+          <span class="card-species">Lion · Primary Protagonist</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-quote" style="border-color:var(--yellow); color:var(--navy);">
+          "A real Zoofrin never gives up!"
+        </div>
+        <div>
+          <div class="card-section-label">Personality</div>
+          <p class="card-personality">Larry is the heart of the group — steady, warm, and always ready to encourage friends when they doubt themselves. He leads not by commanding, but by showing up.</p>
+        </div>
+        <div>
+          <div class="card-section-label">Key Traits</div>
+          <div class="card-traits">
+            <span class="trait-chip">Brave</span>
+            <span class="trait-chip">Dependable</span>
+            <span class="trait-chip">Natural protector</span>
+            <span class="trait-chip">Humble</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="licensing-label">Licensing</div>
+          <div class="licensing-text">Plush, backpacks, bedding, apparel, video game lead</div>
+        </div>
+        <div class="story-role-badge" style="background:#fff8e1;color:var(--navy);">Drives A-plots</div>
+      </div>
+    </div>
+
+    <!-- 2. Henry Hamster -->
+    <div class="char-full-card fade-up" data-name="Henry Hamster" data-color="teal" data-filter="creator">
+      <div class="card-header" style="background:var(--teal);">
+        <div class="card-emoji-wrap">🐹</div>
+        <div class="card-header-text">
+          <div class="card-name">Henry Hamster</div>
+          <span class="card-role-pill">The Inventor</span>
+          <span class="card-species">Hamster · Comic Relief</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-quote" style="border-color:var(--teal);">
+          "I have an idea — maybe two!"
+        </div>
+        <div>
+          <div class="card-section-label">Personality</div>
+          <p class="card-personality">Henry's brain moves a mile a minute. He builds gadgets that sometimes work perfectly and sometimes hilariously don't — and he loves the process either way.</p>
+        </div>
+        <div>
+          <div class="card-section-label">Key Traits</div>
+          <div class="card-traits">
+            <span class="trait-chip">Curious</span>
+            <span class="trait-chip">Clever</span>
+            <span class="trait-chip">Enthusiastic</span>
+            <span class="trait-chip">Over-thinks</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="licensing-label">Licensing</div>
+          <div class="licensing-text">STEM toys, science kits, puzzle games, apps</div>
+        </div>
+        <div class="story-role-badge" style="background:#e0f7f8;color:var(--navy);">Plot catalyst</div>
+      </div>
+    </div>
+
+    <!-- 3. Clarissa the Bunny -->
+    <div class="char-full-card fade-up" data-name="Clarissa" data-color="pink" data-filter="heart">
+      <div class="card-header" style="background:var(--pink);">
+        <div class="card-emoji-wrap">🐰</div>
+        <div class="card-header-text">
+          <div class="card-name">Clarissa</div>
+          <span class="card-role-pill">The Jokester</span>
+          <span class="card-species">Bunny · Comic Heart</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-quote" style="border-color:var(--pink);">
+          "Why so serious? Let's have fun!"
+        </div>
+        <div>
+          <div class="card-section-label">Personality</div>
+          <p class="card-personality">Clarissa keeps the energy light and the laughs coming. She uses humor to connect with friends and defuse tense moments — with a big heart behind every joke.</p>
+        </div>
+        <div>
+          <div class="card-section-label">Key Traits</div>
+          <div class="card-traits">
+            <span class="trait-chip">Quick-witted</span>
+            <span class="trait-chip">Playful</span>
+            <span class="trait-chip">Big-hearted</span>
+            <span class="trait-chip">Disarming</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="licensing-label">Licensing</div>
+          <div class="licensing-text">Party supplies, humor books, fashion accessories, greeting cards</div>
+        </div>
+        <div class="story-role-badge" style="background:#fce4ec;color:var(--navy);">Comic ensemble</div>
+      </div>
+    </div>
+
+    <!-- 4. Taylor Turtle -->
+    <div class="char-full-card fade-up" data-name="Taylor Turtle" data-color="green" data-filter="wisdom">
+      <div class="card-header" style="background:var(--green);">
+        <div class="card-emoji-wrap">🐢</div>
+        <div class="card-header-text">
+          <div class="card-name">Taylor Turtle</div>
+          <span class="card-role-pill">The Thinker</span>
+          <span class="card-species">Turtle · Twin #1 · Mediator</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-quote" style="border-color:var(--green);">
+          "Let me think about that for a moment."
+        </div>
+        <div>
+          <div class="card-section-label">Personality</div>
+          <p class="card-personality">Taylor is the calm, analytical twin who prefers to gather all the facts before acting. A natural mediator, Taylor helps the group slow down and see the full picture.</p>
+        </div>
+        <div>
+          <div class="card-section-label">Key Traits</div>
+          <div class="card-traits">
+            <span class="trait-chip">Thoughtful</span>
+            <span class="trait-chip">Methodical</span>
+            <span class="trait-chip">Loves research</span>
+            <span class="trait-chip">Steady</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="licensing-label">Licensing</div>
+          <div class="licensing-text">Books, educational games, science products, bookmarks</div>
+        </div>
+        <div class="story-role-badge" style="background:#e8f5e9;color:var(--navy);">Voice of reason</div>
+      </div>
+    </div>
+
+    <!-- 5. Torrie Turtle -->
+    <div class="char-full-card fade-up" data-name="Torrie Turtle" data-color="green" data-filter="leader">
+      <div class="card-header" style="background:var(--green);">
+        <div class="card-emoji-wrap">🐢</div>
+        <div class="card-header-text">
+          <div class="card-name">Torrie Turtle</div>
+          <span class="card-role-pill">The Doer</span>
+          <span class="card-species">Turtle · Twin #2 · Action-first</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-quote" style="border-color:var(--green);">
+          "We can figure it out as we go!"
+        </div>
+        <div>
+          <div class="card-section-label">Personality</div>
+          <p class="card-personality">Where Taylor plans, Torrie leaps. Impulsive and energetic, Torrie learns by doing. The twins together represent the productive tension between thinking and action.</p>
+        </div>
+        <div>
+          <div class="card-section-label">Key Traits</div>
+          <div class="card-traits">
+            <span class="trait-chip">Impulsive</span>
+            <span class="trait-chip">Energetic</span>
+            <span class="trait-chip">Loyal</span>
+            <span class="trait-chip">Fearless</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="licensing-label">Licensing</div>
+          <div class="licensing-text">Action toys, sports gear, twin-character merchandise</div>
+        </div>
+        <div class="story-role-badge" style="background:#e8f5e9;color:var(--navy);">Plot momentum</div>
+      </div>
+    </div>
+
+    <!-- 6. Dreamy the Koala -->
+    <div class="char-full-card fade-up" data-name="Dreamy" data-color="pink" data-filter="creator">
+      <div class="card-header" style="background:var(--pink);">
+        <div class="card-emoji-wrap">🐨</div>
+        <div class="card-header-text">
+          <div class="card-name">Dreamy the Koala</div>
+          <span class="card-role-pill">The Dreamer</span>
+          <span class="card-species">Koala · Emotional Depth</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-quote" style="border-color:var(--pink);">
+          "What if we imagined something even better?"
+        </div>
+        <div>
+          <div class="card-section-label">Personality</div>
+          <p class="card-personality">Dreamy lives in a world of possibility. Her creative visions inspire the group even when they seem impossible — she sees what could be, not just what is.</p>
+        </div>
+        <div>
+          <div class="card-section-label">Key Traits</div>
+          <div class="card-traits">
+            <span class="trait-chip">Imaginative</span>
+            <span class="trait-chip">Artistic</span>
+            <span class="trait-chip">Soft-spoken</span>
+            <span class="trait-chip">Visionary</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="licensing-label">Licensing</div>
+          <div class="licensing-text">Art supplies, dream journals, nighttime products, cozy plush</div>
+        </div>
+        <div class="story-role-badge" style="background:#fce4ec;color:var(--navy);">Arts &amp; imagination</div>
+      </div>
+    </div>
+
+    <!-- 7. Fenwick the Orangutan -->
+    <div class="char-full-card fade-up" data-name="Fenwick" data-color="yellow" data-filter="creator">
+      <div class="card-header" style="background:var(--yellow);">
+        <div class="card-emoji-wrap">🦧</div>
+        <div class="card-header-text">
+          <div class="card-name">Fenwick</div>
+          <span class="card-role-pill">The Artist</span>
+          <span class="card-species">Orangutan · Creative Catalyst</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-quote" style="border-color:var(--yellow); color:var(--navy);">
+          "Every day is a blank canvas!"
+        </div>
+        <div>
+          <div class="card-section-label">Personality</div>
+          <p class="card-personality">Fenwick turns everything around him into art — from murals to music to storytelling. He helps friends express what they can't put into words, bridging conflicts through creativity.</p>
+        </div>
+        <div>
+          <div class="card-section-label">Key Traits</div>
+          <div class="card-traits">
+            <span class="trait-chip">Expressive</span>
+            <span class="trait-chip">Passionate</span>
+            <span class="trait-chip">Sees beauty</span>
+            <span class="trait-chip">Bridge-builder</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="licensing-label">Licensing</div>
+          <div class="licensing-text">Art kits, sketchbooks, musical toys, craft sets, school supplies</div>
+        </div>
+        <div class="story-role-badge" style="background:#fff8e1;color:var(--navy);">Creative catalyst</div>
+      </div>
+    </div>
+
+    <!-- 8. Shuffles the Kangaroo -->
+    <div class="char-full-card fade-up" data-name="Shuffles" data-color="green" data-filter="leader">
+      <div class="card-header" style="background:var(--green);">
+        <div class="card-emoji-wrap">🦘</div>
+        <div class="card-header-text">
+          <div class="card-name">Shuffles</div>
+          <span class="card-role-pill">The Athlete</span>
+          <span class="card-species">Kangaroo · Team Player</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-quote" style="border-color:var(--green);">
+          "Ready, set, bounce!"
+        </div>
+        <div>
+          <div class="card-section-label">Personality</div>
+          <p class="card-personality">Shuffles loves every sport and game — and more importantly, loves bringing everyone along for the ride. Teaches perseverance and the joy of teamwork over winning.</p>
+        </div>
+        <div>
+          <div class="card-section-label">Key Traits</div>
+          <div class="card-traits">
+            <span class="trait-chip">Energetic</span>
+            <span class="trait-chip">Competitive</span>
+            <span class="trait-chip">Team player</span>
+            <span class="trait-chip">Resilient</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="licensing-label">Licensing</div>
+          <div class="licensing-text">Sports gear, athletic apparel, outdoor toys, fitness apps</div>
+        </div>
+        <div class="story-role-badge" style="background:#e8f5e9;color:var(--navy);">Sport &amp; teamwork</div>
+      </div>
+    </div>
+
+    <!-- 9. Princess the Hippo -->
+    <div class="char-full-card fade-up" data-name="Princess" data-color="pink" data-filter="heart">
+      <div class="card-header" style="background:var(--pink);">
+        <div class="card-emoji-wrap">🦛</div>
+        <div class="card-header-text">
+          <div class="card-name">Princess</div>
+          <span class="card-role-pill">The Nurturer</span>
+          <span class="card-species">Hippopotamus · Emotional Anchor</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-quote" style="border-color:var(--pink);">
+          "There's always room for one more at the table."
+        </div>
+        <div>
+          <div class="card-section-label">Personality</div>
+          <p class="card-personality">Princess is the emotional anchor of the group. She feeds, comforts, and rallies everyone when spirits are low — fiercely protective and endlessly warm.</p>
+        </div>
+        <div>
+          <div class="card-section-label">Key Traits</div>
+          <div class="card-traits">
+            <span class="trait-chip">Warm</span>
+            <span class="trait-chip">Protective</span>
+            <span class="trait-chip">Incredible cook</span>
+            <span class="trait-chip">Community-first</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="licensing-label">Licensing</div>
+          <div class="licensing-text">Play kitchen, cookware toys, food products, homeware</div>
+        </div>
+        <div class="story-role-badge" style="background:#fce4ec;color:var(--navy);">Safety &amp; resolution</div>
+      </div>
+    </div>
+
+    <!-- 10. Mayor Owl -->
+    <div class="char-full-card fade-up" data-name="Mayor Owl" data-color="navy" data-filter="wisdom">
+      <div class="card-header" style="background:var(--navy);">
+        <div class="card-emoji-wrap">🦉</div>
+        <div class="card-header-text">
+          <div class="card-name">Mayor Owl</div>
+          <span class="card-role-pill">The Wise Elder</span>
+          <span class="card-species">Owl · Mentor · Authority</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-quote" style="border-color:var(--navy);">
+          "Wisdom is found in asking the right question."
+        </div>
+        <div>
+          <div class="card-section-label">Personality</div>
+          <p class="card-personality">Mayor Owl guides rather than directs. He trusts the Zoofrins to figure things out, offering just enough insight to point the way — patient, knowledgeable, and endlessly curious.</p>
+        </div>
+        <div>
+          <div class="card-section-label">Key Traits</div>
+          <div class="card-traits">
+            <span class="trait-chip">Knowledgeable</span>
+            <span class="trait-chip">Patient</span>
+            <span class="trait-chip">Speaks in riddles</span>
+            <span class="trait-chip">Lifelong learner</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="licensing-label">Licensing</div>
+          <div class="licensing-text">Educational books, teacher gifts, library products, board games</div>
+        </div>
+        <div class="story-role-badge" style="background:#e8eaf6;color:var(--navy);">Mentor &amp; elder</div>
+      </div>
+    </div>
+
+    <!-- 11. The Tooth Fairy -->
+    <div class="char-full-card fade-up" data-name="Tooth Fairy" data-color="teal" data-filter="magic">
+      <div class="card-header" style="background:var(--teal);">
+        <div class="card-emoji-wrap">🧚</div>
+        <div class="card-header-text">
+          <div class="card-name">The Tooth Fairy</div>
+          <span class="card-role-pill">Magical Guide</span>
+          <span class="card-species">Fairy · Book 1 Star · Universe Bridge</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-quote" style="border-color:var(--teal);">
+          "Every lost tooth is the start of a new adventure."
+        </div>
+        <div>
+          <div class="card-section-label">Personality</div>
+          <p class="card-personality">Both whimsical and wise — the Tooth Fairy makes life's small milestones feel magical. She bridges the Zoofrin world and ours, turning ordinary moments into extraordinary memories.</p>
+        </div>
+        <div>
+          <div class="card-section-label">Key Traits</div>
+          <div class="card-traits">
+            <span class="trait-chip">Magical</span>
+            <span class="trait-chip">Mysterious</span>
+            <span class="trait-chip">Deeply caring</span>
+            <span class="trait-chip">Milestone marker</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="licensing-label">Licensing</div>
+          <div class="licensing-text">Fairy sets, dental products, milestone books, gift boxes</div>
+        </div>
+        <div class="story-role-badge" style="background:#e0f7f8;color:var(--navy);">Special episodes</div>
+      </div>
+    </div>
+
+  </div><!-- /charGrid -->
+</div><!-- /container -->
+
+<!-- TEAM DYNAMICS -->
+<section class="dynamics-section">
+  <div class="dynamics-inner">
+    <div class="page-hero-tag" style="margin-bottom:16px;">How They Connect</div>
+    <h2>Character Dynamics</h2>
+    <p>Every great ensemble is defined by its relationships. Here's how the Zoofrins push, pull, and grow together.</p>
+    <div class="dynamics-grid">
+      <div class="dynamic-card fade-up">
+        <div class="dynamic-emojis">🦁🐹</div>
+        <div class="dynamic-text">
+          <h4>Larry + Henry</h4>
+          <p>Best friends. Larry grounds Henry's wildest ideas; Henry pushes Larry beyond his comfort zone. Heart meets brains.</p>
+        </div>
+      </div>
+      <div class="dynamic-card fade-up">
+        <div class="dynamic-emojis">🐰🐨</div>
+        <div class="dynamic-text">
+          <h4>Clarissa + Dreamy</h4>
+          <p>Comic and poet. Clarissa's jokes open the door for Dreamy's deeper reflections — humor as emotional access.</p>
+        </div>
+      </div>
+      <div class="dynamic-card fade-up">
+        <div class="dynamic-emojis">🐢🐢</div>
+        <div class="dynamic-text">
+          <h4>Taylor + Torrie</h4>
+          <p>The thinking-doing twins — inseparable and always in productive tension. Two halves of one great decision.</p>
+        </div>
+      </div>
+      <div class="dynamic-card fade-up">
+        <div class="dynamic-emojis">🦧🐰</div>
+        <div class="dynamic-text">
+          <h4>Fenwick + Clarissa</h4>
+          <p>Art meets humor. Fenwick expresses through creativity what Clarissa turns into laughter — they speak the same language differently.</p>
+        </div>
+      </div>
+      <div class="dynamic-card fade-up">
+        <div class="dynamic-emojis">🦛🦉</div>
+        <div class="dynamic-text">
+          <h4>Princess + Mayor Owl</h4>
+          <p>Heart and mind. The town's emotional and intellectual pillars — one feeds the body, the other feeds the soul.</p>
+        </div>
+      </div>
+      <div class="dynamic-card fade-up">
+        <div class="dynamic-emojis">🧚🦁</div>
+        <div class="dynamic-text">
+          <h4>Tooth Fairy + Larry</h4>
+          <p>Magic meets courage. The Tooth Fairy's visits challenge Larry to lead through wonder, not just bravery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <h2>Ready to Bring the Zoofrins to Life?</h2>
+  <p>Licensing, animation, publishing — the full IP package is ready. Let's talk.</p>
+  <div class="cta-btns">
+    <a href="index.html#show" class="btn btn-navy">View the Pitch Deck</a>
+    <a href="index.html#signup" class="btn btn-white">Get in Touch</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Zoofrins. All rights reserved. | <a href="index.html">zoofrins.com</a></p>
+</footer>
+
+<script>
+  // Fade-up on scroll
+  const obs = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); }), { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Filter chips (top hero)
+  const chips = document.querySelectorAll('.hero-emoji-chip');
+  const cards = document.querySelectorAll('.char-full-card');
+  chips.forEach(chip => {
+    chip.addEventListener('click', e => {
+      e.preventDefault();
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const f = chip.dataset.filter;
+      cards.forEach(card => {
+        if (f === 'all' || card.dataset.filter === f) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Sort buttons
+  const sortBtns = document.querySelectorAll('.filter-btn');
+  const grid = document.getElementById('charGrid');
+  sortBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      sortBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const sort = btn.dataset.sort;
+      const cardArr = Array.from(grid.querySelectorAll('.char-full-card'));
+      if (sort === 'alpha') {
+        cardArr.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
+      } else if (sort.startsWith('color-')) {
+        const color = sort.replace('color-', '');
+        cardArr.sort((a, b) => {
+          const aMatch = a.dataset.color === color ? 0 : 1;
+          const bMatch = b.dataset.color === color ? 0 : 1;
+          return aMatch - bMatch;
+        });
+      } else {
+        // default order — restore DOM order by re-reading original indices
+        cardArr.sort((a, b) => Array.from(grid.children).indexOf(a) - Array.from(grid.children).indexOf(b));
+        // reset by re-appending in original index via data-order
+      }
+      cardArr.forEach(c => grid.appendChild(c));
+    });
+  });
+</script>
+</body>
+</html>
