@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get the Book — The One &amp; Only Magical Tooth Fairy | Zoofrins</title>
+<meta name="description" content="Bring home The One & Only Magical Tooth Fairy, Book 1 in the Zoofrins series. Choose your format and bundle, then take home a piece of Zoofrinville.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#56B848;
+    --pink:#EF8FA2;
+    --yellow:#F1AB2D;
+    --teal:#42BCC2;
+    --navy:#1B2C5B;
+    --cream:#FFFBF2;
+    --paper:#FFFFFF;
+    --ink:#1B2C5B;
+    --ink-soft:#4A5578;
+    --line:#E7E2D4;
+    --shadow: 0 14px 30px -12px rgba(27,44,91,0.22);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Nunito', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Baloo 2', sans-serif;
+    margin:0;
+    color:var(--navy);
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,251,242,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1120px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-brand{
+    font-family:'Baloo 2', sans-serif; font-weight:800; font-size:1.3rem;
+    color:var(--navy); text-decoration:none; letter-spacing:.2px;
+  }
+  .nav-back{
+    font-size:.92rem; font-weight:700; color:var(--ink-soft); text-decoration:none;
+    display:flex; align-items:center; gap:6px;
+  }
+  .nav-back:hover{color:var(--navy);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:56px 0 40px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(640px 320px at 12% -10%, rgba(241,171,45,0.18), transparent 60%),
+      radial-gradient(560px 320px at 100% 0%, rgba(66,188,194,0.16), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--paper); border:1px solid var(--line);
+    color:var(--green); font-weight:800; font-size:.78rem;
+    letter-spacing:.06em; text-transform:uppercase;
+    padding:6px 14px; border-radius:999px;
+    box-shadow:var(--shadow);
+  }
+  .hero h1{
+    font-size:clamp(2rem, 4vw, 2.85rem);
+    line-height:1.08;
+    margin:18px 0 14px;
+    font-weight:800;
+  }
+  .hero h1 .accent{color:var(--pink);}
+  .hero p.lede{
+    font-size:1.08rem; color:var(--ink-soft); line-height:1.6; max-width:520px; margin:0 0 22px;
+  }
+  .hero-meta{
+    display:flex; gap:18px; flex-wrap:wrap; font-size:.92rem; color:var(--ink-soft); font-weight:700;
+  }
+  .hero-meta span{display:inline-flex; align-items:center; gap:6px;}
+
+  .book-stage{
+    position:relative;
+    display:flex; justify-content:center; align-items:center;
+  }
+  .book-card{
+    position:relative;
+    width:280px; aspect-ratio:3/4;
+    border-radius:22px;
+    background:linear-gradient(160deg, var(--teal), var(--navy) 130%);
+    box-shadow: var(--shadow);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    color:#fff; text-align:center; padding:28px;
+    transform:rotate(-2deg);
+  }
+  .book-card .sparkle{font-size:3.4rem; line-height:1; margin-bottom:10px;}
+  .book-card .booktitle{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:1.3rem; line-height:1.2;}
+  .book-card .bookline{font-size:.85rem; opacity:.85; margin-top:8px; font-weight:600;}
+  .badge-floating{
+    position:absolute; top:-14px; right:-10px;
+    background:var(--yellow); color:var(--navy);
+    font-weight:800; font-size:.78rem;
+    padding:8px 14px; border-radius:999px;
+    box-shadow:var(--shadow);
+    transform:rotate(6deg);
+  }
+
+  /* ---------- Section shared ---------- */
+  section{padding:54px 0;}
+  .section-head{text-align:center; max-width:640px; margin:0 auto 36px;}
+  .section-head .kicker{
+    display:inline-block; font-weight:800; font-size:.78rem; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+  }
+  .section-head h2{font-size:clamp(1.5rem, 2.6vw, 2rem); font-weight:800;}
+  .section-head p{color:var(--ink-soft); margin-top:10px; line-height:1.6;}
+
+  /* ---------- Format picker ---------- */
+  .formats{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:18px;
+  }
+  .format-card{
+    position:relative;
+    background:var(--paper);
+    border:2px solid var(--line);
+    border-radius:18px;
+    padding:24px 20px 22px;
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    text-align:left;
+  }
+  .format-card:hover{transform:translateY(-3px); box-shadow:var(--shadow);}
+  .format-card.selected{
+    border-color:var(--green);
+    box-shadow: 0 0 0 4px rgba(86,184,72,0.14), var(--shadow);
+  }
+  .format-card input{
+    position:absolute; opacity:0; pointer-events:none;
+  }
+  .format-top{display:flex; align-items:flex-start; justify-content:space-between;}
+  .format-icon{font-size:1.7rem;}
+  .format-check{
+    width:22px; height:22px; border-radius:50%;
+    border:2px solid var(--line); flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center;
+    transition:all .15s ease;
+  }
+  .format-card.selected .format-check{background:var(--green); border-color:var(--green);}
+  .format-card.selected .format-check::after{
+    content:"✓"; color:#fff; font-size:.8rem; font-weight:800;
+  }
+  .format-name{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:1.12rem; margin-top:14px;}
+  .format-desc{font-size:.88rem; color:var(--ink-soft); margin-top:4px; line-height:1.45;}
+  .format-price{
+    margin-top:14px; font-weight:800; font-size:1.2rem; color:var(--navy);
+  }
+  .format-tag{
+    display:inline-block; margin-top:8px;
+    font-size:.72rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase;
+    background:rgba(241,171,45,0.18); color:#9c6a12;
+    padding:3px 9px; border-radius:999px;
+  }
+
+  /* ---------- Bundles ---------- */
+  .bundle-shelf{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;
+  }
+  .bundle-card{
+    background:var(--paper); border-radius:20px; border:2px solid var(--line);
+    padding:0; overflow:hidden; cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    display:flex; flex-direction:column;
+  }
+  .bundle-card:hover{transform:translateY(-4px) rotate(-0.3deg); box-shadow:var(--shadow);}
+  .bundle-card.selected{
+    border-color:var(--pink);
+    box-shadow: 0 0 0 4px rgba(239,143,162,0.16), var(--shadow);
+  }
+  .bundle-card input{position:absolute; opacity:0; pointer-events:none;}
+  .bundle-art{
+    height:120px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:2.6rem;
+    position:relative;
+  }
+  .bundle-art.solo{background:linear-gradient(135deg, rgba(86,184,72,0.16), rgba(86,184,72,0.04));}
+  .bundle-art.friend{background:linear-gradient(135deg, rgba(66,188,194,0.18), rgba(66,188,194,0.05));}
+  .bundle-art.family{background:linear-gradient(135deg, rgba(239,143,162,0.2), rgba(241,171,45,0.08));}
+  .bundle-ribbon{
+    position:absolute; top:10px; right:10px;
+    background:var(--navy); color:#fff;
+    font-size:.68rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase;
+    padding:4px 10px; border-radius:999px;
+  }
+  .bundle-body{padding:18px 20px 22px; flex:1; display:flex; flex-direction:column;}
+  .bundle-name{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:1.08rem;}
+  .bundle-includes{font-size:.86rem; color:var(--ink-soft); margin-top:8px; line-height:1.55; flex:1;}
+  .bundle-price-row{
+    display:flex; align-items:baseline; justify-content:space-between; margin-top:14px;
+  }
+  .bundle-price{font-weight:800; font-size:1.25rem; color:var(--navy);}
+  .bundle-save{font-size:.78rem; font-weight:800; color:var(--green);}
+  .bundle-check{
+    width:24px; height:24px; border-radius:50%; border:2px solid var(--line);
+    position:absolute; top:10px; left:10px; background:rgba(255,255,255,0.9);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .bundle-card.selected .bundle-check{background:var(--pink); border-color:var(--pink);}
+  .bundle-card.selected .bundle-check::after{content:"✓"; color:#fff; font-size:.75rem; font-weight:800;}
+
+  /* ---------- Order summary ---------- */
+  .order-panel{
+    background:var(--paper);
+    border:2px solid var(--line);
+    border-radius:22px;
+    padding:28px 28px 24px;
+    box-shadow:var(--shadow);
+  }
+  .order-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:10px 0; border-bottom:1px dashed var(--line);
+    font-size:.96rem;
+  }
+  .order-row:last-of-type{border-bottom:none;}
+  .order-row .label{color:var(--ink-soft); font-weight:700;}
+  .order-row .value{font-weight:800; color:var(--navy);}
+  .order-total{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-top:14px; padding-top:14px; border-top:2px solid var(--navy);
+  }
+  .order-total .label{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:1.1rem; color:var(--navy);}
+  .order-total .value{font-family:'Baloo 2',sans-serif; font-weight:800; font-size:1.5rem; color:var(--green);}
+
+  .qty-row{display:flex; align-items:center; justify-content:space-between; margin-top:18px;}
+  .qty-label{font-weight:800; color:var(--navy); font-size:.95rem;}
+  .qty-control{display:flex; align-items:center; gap:0; border:2px solid var(--line); border-radius:999px; overflow:hidden;}
+  .qty-control button{
+    background:var(--cream); border:none; width:36px; height:36px;
+    font-size:1.1rem; font-weight:800; color:var(--navy); cursor:pointer;
+  }
+  .qty-control button:hover{background:var(--line);}
+  .qty-control .qty-num{width:42px; text-align:center; font-weight:800; color:var(--navy);}
+
+  .promo-row{margin-top:16px; display:flex; gap:8px;}
+  .promo-row input{
+    flex:1; border:2px solid var(--line); border-radius:12px; padding:10px 14px;
+    font-family:'Nunito',sans-serif; font-size:.92rem; font-weight:700; color:var(--navy);
+    background:var(--cream);
+  }
+  .promo-row input:focus{outline:none; border-color:var(--teal);}
+  .promo-row button{
+    border:none; border-radius:12px; padding:10px 16px;
+    background:var(--navy); color:#fff; font-weight:800; font-size:.86rem; cursor:pointer;
+  }
+  .promo-row button:hover{background:#142149;}
+  .promo-note{font-size:.78rem; color:var(--ink-soft); margin-top:6px;}
+  .promo-applied{font-size:.82rem; font-weight:800; color:var(--green); margin-top:6px; display:none;}
+
+  .cta-buy{
+    display:block; width:100%; text-align:center;
+    margin-top:20px;
+    background:var(--green); color:#fff;
+    border:none; border-radius:999px;
+    padding:16px 20px; font-size:1.05rem; font-weight:800;
+    font-family:'Baloo 2',sans-serif;
+    cursor:pointer;
+    box-shadow:0 10px 24px -8px rgba(86,184,72,0.55);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .cta-buy:hover{transform:translateY(-2px);}
+  .cta-note{
+    text-align:center; font-size:.8rem; color:var(--ink-soft); margin-top:10px;
+  }
+  .trust-row{
+    display:flex; justify-content:center; gap:18px; margin-top:18px; flex-wrap:wrap;
+    font-size:.8rem; color:var(--ink-soft); font-weight:700;
+  }
+  .trust-row span{display:flex; align-items:center; gap:6px;}
+
+  /* ---------- Layout: sticky summary ---------- */
+  .buy-grid{display:grid; grid-template-columns:1fr 380px; gap:40px; align-items:start;}
+  .buy-main > section:first-child{padding-top:0;}
+  .sticky-col{position:sticky; top:96px;}
+
+  .divider{height:1px; background:var(--line); margin:0;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--navy); color:#fff; padding:36px 0; margin-top:30px;
+  }
+  footer .wrap{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  }
+  footer .fbrand{font-family:'Baloo 2',sans-serif; font-weight:800; font-size:1.1rem;}
+  footer .fmeta{font-size:.82rem; opacity:.7;}
+  footer a{text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px){
+    .hero-inner{grid-template-columns:1fr;}
+    .book-stage{order:-1; margin-bottom:8px;}
+    .buy-grid{grid-template-columns:1fr;}
+    .sticky-col{position:static;}
+    .formats{grid-template-columns:1fr;}
+    .bundle-shelf{grid-template-columns:1fr;}
+  }
+  @media (max-width: 560px){
+    .hero{padding:36px 0 28px;}
+    section{padding:40px 0;}
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+
+  .visually-hidden{
+    position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);
+  }
+
+  /* Focus visibility */
+  a:focus-visible, button:focus-visible, .format-card:focus-visible, .bundle-card:focus-visible, input:focus-visible{
+    outline:3px solid var(--teal); outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="https://avilanow.github.io/Zoofrins/">Zoofrins</a>
+    <a class="nav-back" href="https://avilanow.github.io/Zoofrins/#books">&larr; Back to Books</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">📖 Book 1 &middot; Published</span>
+      <h1>Take home <span class="accent">The One &amp; Only<br>Magical Tooth Fairy</span></h1>
+      <p class="lede">The story that started the whole Zoofrinville universe — now ready for your shelf, your stroller bag, or your kid's tablet. Pick a format below and make it official.</p>
+      <div class="hero-meta">
+        <span>🎨 Fully illustrated</span>
+        <span>👶 Ages 4–8</span>
+        <span>📄 48 pages</span>
+      </div>
+    </div>
+    <div class="book-stage">
+      <div class="badge-floating">Reader favorite ✨</div>
+      <div class="book-card">
+        <div class="sparkle">🧚✨</div>
+        <div class="booktitle">The One &amp; Only<br>Magical Tooth Fairy</div>
+        <div class="bookline">A Zoofrins Book &middot; Book 1</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap buy-grid">
+  <div class="buy-main">
+
+    <section id="format">
+      <div class="section-head" style="text-align:left; margin-left:0;">
+        <span class="kicker">Step 1</span>
+        <h2>Choose your format</h2>
+        <p style="margin-left:0;">However your family reads, there's a Zoofrins for that.</p>
+      </div>
+
+      <div class="formats" role="radiogroup" aria-label="Choose a book format">
+        <label class="format-card selected" data-price="24.99" data-format="Hardcover">
+          <input type="radio" name="format" value="hardcover" checked>
+          <div class="format-top">
+            <span class="format-icon">📘</span>
+            <span class="format-check" aria-hidden="true"></span>
+          </div>
+          <div class="format-name">Hardcover</div>
+          <div class="format-desc">Durable, gift-ready, built for years of bedtime reads.</div>
+          <span class="format-tag">Most loved</span>
+          <div class="format-price">$24.99</div>
+        </label>
+
+        <label class="format-card" data-price="14.99" data-format="Paperback">
+          <input type="radio" name="format" value="paperback">
+          <div class="format-top">
+            <span class="format-icon">📗</span>
+            <span class="format-check" aria-hidden="true"></span>
+          </div>
+          <div class="format-name">Paperback</div>
+          <div class="format-desc">Light, affordable, easy to toss in a backpack.</div>
+          <div class="format-price">$14.99</div>
+        </label>
+
+        <label class="format-card" data-price="7.99" data-format="eBook">
+          <input type="radio" name="format" value="ebook">
+          <div class="format-top">
+            <span class="format-icon">📱</span>
+            <span class="format-check" aria-hidden="true"></span>
+          </div>
+          <div class="format-name">eBook</div>
+          <div class="format-desc">Instant access, read it tonight on any device.</div>
+          <div class="format-price">$7.99</div>
+        </label>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="bundle">
+      <div class="section-head" style="text-align:left; margin-left:0;">
+        <span class="kicker">Step 2</span>
+        <h2>Pick your Zoofrinville bundle</h2>
+        <p style="margin-left:0;">Going solo, or bringing the whole crew? Bundles apply on top of your chosen format.</p>
+      </div>
+
+      <div class="bundle-shelf" role="radiogroup" aria-label="Choose a bundle">
+        <label class="bundle-card selected" data-addon="0" data-bundle="Just the Book">
+          <input type="radio" name="bundle" value="solo" checked>
+          <div class="bundle-check" aria-hidden="true"></div>
+          <div class="bundle-art solo">📖</div>
+          <div class="bundle-body">
+            <div class="bundle-name">Just the Book</div>
+            <div class="bundle-includes">1 copy of The One &amp; Only Magical Tooth Fairy in your chosen format.</div>
+            <div class="bundle-price-row">
+              <span class="bundle-price">+$0.00</span>
+            </div>
+          </div>
+        </label>
+
+        <label class="bundle-card" data-addon="12" data-bundle="Best Friends Bundle">
+          <input type="radio" name="bundle" value="friends">
+          <div class="bundle-check" aria-hidden="true"></div>
+          <div class="bundle-art friend">
+            🧸
+            <span class="bundle-ribbon">Popular</span>
+          </div>
+          <div class="bundle-body">
+            <div class="bundle-name">Best Friends Bundle</div>
+            <div class="bundle-includes">The book + a Larry Lion plush + a set of 5 Zoofrins paw stickers.</div>
+            <div class="bundle-price-row">
+              <span class="bundle-price">+$12.00</span>
+              <span class="bundle-save">Save $6</span>
+            </div>
+          </div>
+        </label>
+
+        <label class="bundle-card" data-addon="22" data-bundle="Family Library Bundle">
+          <input type="radio" name="bundle" value="family">
+          <div class="bundle-check" aria-hidden="true"></div>
+          <div class="bundle-art family">🏡</div>
+          <div class="bundle-body">
+            <div class="bundle-name">Family Library Bundle</div>
+            <div class="bundle-includes">2 copies of the book + a Zoofrinville tote bag + early access to Book 2.</div>
+            <div class="bundle-price-row">
+              <span class="bundle-price">+$22.00</span>
+              <span class="bundle-save">Save $14</span>
+            </div>
+          </div>
+        </label>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="sticky-col">
+    <div class="order-panel">
+      <h3 style="font-size:1.15rem; margin-bottom:14px;">Your Order</h3>
+
+      <div class="order-row">
+        <span class="label" id="sum-format-label">Hardcover</span>
+        <span class="value" id="sum-format-price">$24.99</span>
+      </div>
+      <div class="order-row">
+        <span class="label" id="sum-bundle-label">Just the Book</span>
+        <span class="value" id="sum-bundle-price">+$0.00</span>
+      </div>
+      <div class="order-row" id="discount-row" style="display:none;">
+        <span class="label">Promo (<span id="promo-code-label"></span>)</span>
+        <span class="value" id="discount-value">−$0.00</span>
+      </div>
+
+      <div class="qty-row">
+        <span class="qty-label">Quantity</span>
+        <div class="qty-control">
+          <button type="button" id="qty-minus" aria-label="Decrease quantity">−</button>
+          <span class="qty-num" id="qty-num">1</span>
+          <button type="button" id="qty-plus" aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+
+      <div class="promo-row">
+        <input type="text" id="promo-input" placeholder="Promo code" aria-label="Promo code">
+        <button type="button" id="promo-apply">Apply</button>
+      </div>
+      <div class="promo-note">Try ZOOFRINS, FAIRY10, or TOOTH10</div>
+      <div class="promo-applied" id="promo-applied">Promo applied — 10% off!</div>
+
+      <div class="order-total">
+        <span class="label">Total</span>
+        <span class="value" id="order-total">$24.99</span>
+      </div>
+
+      <button type="button" class="cta-buy" id="checkout-btn">Continue to Checkout →</button>
+      <p class="cta-note">Secure checkout coming soon — payment isn't live on this preview yet.</p>
+
+      <div class="trust-row">
+        <span>🔒 Secure</span>
+        <span>📦 Ships in 3–5 days</span>
+        <span>↩️ Easy returns</span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">Zoofrins</div>
+    <div class="fmeta">© 2026 Zoofrins. All rights reserved. &middot; <a href="mailto:hello@zoofrins.com">hello@zoofrins.com</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var state = {
+    formatPrice: 24.99,
+    formatName: "Hardcover",
+    bundleAddon: 0,
+    bundleName: "Just the Book",
+    qty: 1,
+    discountPct: 0,
+    promoCode: ""
+  };
+
+  var VALID_PROMOS = { "ZOOFRINS": 10, "FAIRY10": 10, "TOOTH10": 10 };
+
+  var formatCards = document.querySelectorAll('.format-card');
+  var bundleCards = document.querySelectorAll('.bundle-card');
+
+  function fmt(n){
+    return "$" + n.toFixed(2);
+  }
+
+  function render(){
+    document.getElementById('sum-format-label').textContent = state.formatName;
+    document.getElementById('sum-format-price').textContent = fmt(state.formatPrice);
+    document.getElementById('sum-bundle-label').textContent = state.bundleName;
+    document.getElementById('sum-bundle-price').textContent = (state.bundleAddon > 0 ? "+" : "") + fmt(state.bundleAddon);
+    document.getElementById('qty-num').textContent = state.qty;
+
+    var subtotal = (state.formatPrice + state.bundleAddon) * state.qty;
+    var discount = subtotal * (state.discountPct / 100);
+    var total = subtotal - discount;
+
+    var discountRow = document.getElementById('discount-row');
+    if(state.discountPct > 0){
+      discountRow.style.display = 'flex';
+      document.getElementById('promo-code-label').textContent = state.promoCode;
+      document.getElementById('discount-value').textContent = "−" + fmt(discount);
+    } else {
+      discountRow.style.display = 'none';
+    }
+
+    document.getElementById('order-total').textContent = fmt(total);
+  }
+
+  formatCards.forEach(function(card){
+    card.addEventListener('click', function(){
+      formatCards.forEach(function(c){ c.classList.remove('selected'); });
+      card.classList.add('selected');
+      card.querySelector('input').checked = true;
+      state.formatPrice = parseFloat(card.getAttribute('data-price'));
+      state.formatName = card.getAttribute('data-format');
+      render();
+    });
+  });
+
+  bundleCards.forEach(function(card){
+    card.addEventListener('click', function(){
+      bundleCards.forEach(function(c){ c.classList.remove('selected'); });
+      card.classList.add('selected');
+      card.querySelector('input').checked = true;
+      state.bundleAddon = parseFloat(card.getAttribute('data-addon'));
+      state.bundleName = card.getAttribute('data-bundle');
+      render();
+    });
+  });
+
+  document.getElementById('qty-minus').addEventListener('click', function(){
+    if(state.qty > 1){ state.qty--; render(); }
+  });
+  document.getElementById('qty-plus').addEventListener('click', function(){
+    if(state.qty < 10){ state.qty++; render(); }
+  });
+
+  document.getElementById('promo-apply').addEventListener('click', function(){
+    var input = document.getElementById('promo-input');
+    var code = input.value.trim().toUpperCase();
+    var applied = document.getElementById('promo-applied');
+    if(VALID_PROMOS[code]){
+      state.discountPct = VALID_PROMOS[code];
+      state.promoCode = code;
+      applied.style.display = 'block';
+      applied.textContent = "Promo applied — " + VALID_PROMOS[code] + "% off!";
+    } else if(code.length > 0){
+      state.discountPct = 0;
+      state.promoCode = "";
+      applied.style.display = 'block';
+      applied.style.color = '#C0392B';
+      applied.textContent = "That code didn't work — try ZOOFRINS, FAIRY10, or TOOTH10.";
+    }
+    render();
+  });
+
+  document.getElementById('checkout-btn').addEventListener('click', function(){
+    alert("Checkout isn't live yet on this preview.\n\nOrder summary:\n" +
+      state.formatName + " — " + fmt(state.formatPrice) + "\n" +
+      state.bundleName + " — +" + fmt(state.bundleAddon) + "\n" +
+      "Qty: " + state.qty +
+      (state.discountPct > 0 ? "\nPromo: " + state.promoCode + " (" + state.discountPct + "% off)" : "") +
+      "\n\nTotal: " + document.getElementById('order-total').textContent);
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
