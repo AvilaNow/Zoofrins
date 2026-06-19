@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get the Book — The One &amp; Only Magical Tooth Fairy | Zoofrins</title>
+<meta name="description" content="Bring home The One & Only Magical Tooth Fairy, Book 1 in the Zoofrins series. Choose your format and bundle, then take home a piece of Zoofrinville.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#56B848;
+    --pink:#EF8FA2;
+    --yellow:#F1AB2D;
+    --teal:#42BCC2;
+    --navy:#1B2C5B;
+    --cream:#FFFBF2;
+    --paper:#FFFFFF;
+    --ink:#1B2C5B;
+    --ink-soft:#4A5578;
+    --line:#E7E2D4;
+    --shadow: 0 14px 30px -12px rgba(27,44,91,0.22);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Nunito', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Baloo 2', sans-serif;
+    margin:0;
+    color:var(--navy);
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,251,242,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1120px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-brand{
+    font-family:'Baloo 2', sans-serif; font-weight:800; font-size:1.3rem;
+    color:var(--navy); text-decoration:none; letter-spacing:.2px;
+  }
+  .nav-back{
+    font-size:.92rem; font-weight:700; color:var(--ink-soft); text-decoration:none;
+    display:flex; align-items:center; gap:6px;
+  }
+  .nav-back:hover{color:var(--navy);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:56px 0 40px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(640px 320px at 12% -10%, rgba(241,171,45,0.18), transparent 60%),
+      radial-gradient(560px 320px at 100% 0%, rgba(66,188,194,0.16), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--paper); border:1px solid var(--line);
+    color:var(--green); font-weight:800; font-size:.78rem;
+    letter-spacing:.06em; text-transform:uppercase;
+    padding:6px 14px; border-radius:999px;
+    box-shadow:var(--shadow);
+  }
+  .hero h1{
+    font-size:clamp(2rem, 4vw, 2.85rem);
+    line-height:1.08;
+    margin:18px 0 14px;
+    font-weight:800;
+  }
+  .hero h1 .accent{color:var(--pink);}
+  .hero p.lede{
+    font-size:1.08rem; color:var(--ink-soft); line-height:1.6; max-width:520px; margin:0 0 22px;
+  }
+  .hero-meta{
+    display:flex; gap:18px; flex-wrap:wrap; font-size:.92rem; color:var(--ink-soft); font-weight:700;
+  }
+  .hero-meta span{display:inline-flex; align-items:center; gap:6px;}
+
+  .book-stage{
+    position:relative;
+    display:flex; justify-content:center; align-items:center;
+  }
+  .book-card{
+    position:relative;
+    width:280px; aspect-ratio:3/4;
+    border-radius:22px;
+    background:linear-gradient(160deg, var(--teal), var(--navy) 130%);
+    box-shadow: var(--shadow);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    color:#fff; text-align:center; padding:28px;
+    transform:rotate(-2deg);
+  }
+  .book-card .sparkle{font-size:3.4rem; line-height:1; margin-bottom:10px;}
+  .book-card .booktitle{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:1.3rem; line-height:1.2;}
+  .book-card .bookline{font-size:.85rem; opacity:.85; margin-top:8px; font-weight:600;}
+  .badge-floating{
+    position:absolute; top:-14px; right:-10px;
+    background:var(--yellow); color:var(--navy);
+    font-weight:800; font-size:.78rem;
+    padding:8px 14px; border-radius:999px;
+    box-shadow:var(--shadow);
+    transform:rotate(6deg);
+  }
+
+  /* ---------- Section shared ---------- */
+  section{padding:54px 0;}
+  .section-head{text-align:center; max-width:640px; margin:0 auto 36px;}
+  .section-head .kicker{
+    display:inline-block; font-weight:800; font-size:.78rem; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+  }
+  .section-head h2{font-size:clamp(1.5rem, 2.6vw, 2rem); font-weight:800;}
+  .section-head p{color:var(--ink-soft); margin-top:10px; line-height:1.6;}
+
+  /* ---------- Format picker ---------- */
+  .formats{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:18px;
+  }
+  .format-card{
+    position:relative;
+    background:var(--paper);
+    border:2px solid var(--line);
+    border-radius:18px;
+    padding:24px 20px 22px;
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    text-align:left;
+  }
+  .format-card:hover{transform:translateY(-3px); box-shadow:var(--shadow);}
